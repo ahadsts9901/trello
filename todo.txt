@@ -3,3 +3,5 @@ delete cards and columns on deleting board
 random background image on board
 delete cards on deleting columns
 sort data by sequence
+length validation on edit
+realtime socket on all CRUD

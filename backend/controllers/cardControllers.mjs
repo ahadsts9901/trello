@@ -239,10 +239,10 @@ export const deleteCardController = async (req, res, next) => {
     }
 }
 
-export const updateColumnController = async (req, res, next) => {
-    const { boardId, columnId } = req?.params
+export const updateCardController = async (req, res, next) => {
+    const { boardId, columnId, cardId } = req?.params
     const { currentUser } = req
-    const { columnName, sequence } = req?.body
+    const { title, description, type, sequence } = req?.body
 
     if (!boardId || boardId?.trim() === "") {
         return res.status(400).send({
@@ -268,6 +268,18 @@ export const updateColumnController = async (req, res, next) => {
         })
     }
 
+    if (!cardId || cardId?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.idIsMissing
+        })
+    }
+
+    if (!isValidObjectId(cardId)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidId
+        })
+    }
+
     if (!currentUser) {
         return res.status(401).send({
             message: errorMessages?.unAuthError
@@ -281,9 +293,15 @@ export const updateColumnController = async (req, res, next) => {
         })
     }
 
-    if (!columnName || columnName?.trim() === "") {
+    if (!title || title?.trim() === "") {
         return res.status(400).send({
-            message: errorMessages?.requiredParameterMissing("columnName")
+            message: errorMessages?.requiredParameterMissing("title")
+        })
+    }
+
+    if (!description || description?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.requiredParameterMissing("description")
         })
     }
 
@@ -293,24 +311,32 @@ export const updateColumnController = async (req, res, next) => {
         })
     }
 
-    try {
-        const query = { _id: columnId, userId: _id, boardId: boardId }
-        const column = await columnModel.findOne(query)
+    if (type && type?.length && !cardTypesEnum?.includes(type)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidCardType
+        })
+    }
 
-        if (!column) {
+    try {
+        const query = { _id: cardId, userId: _id, boardId: boardId, columnId: columnId }
+        const card = await cardModel.findOne(query)
+
+        if (!card) {
             return res.status(401).send({
                 message: errorMessages?.unAuthError
             })
         }
 
-        column.columnName = columnName
-        column.sequence = +sequence
-        await column.save()
+        card.title = title
+        card.description = description
+        card.type = type
+        card.sequence = +sequence
+        await card.save()
 
-        const data = { ...column, columnName: columnName?.trim(), sequence: +sequence }
+        const data = { ...card, title: title?.trim(), description: description?.trim(), sequence: +sequence }
 
         return res.send({
-            message: errorMessages?.columnUpdated,
+            message: errorMessages?.cardUpdated,
             data: data
         })
 
