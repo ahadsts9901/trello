@@ -161,8 +161,8 @@ export const createCardController = async (req, res, next) => {
     }
 }
 
-export const deleteColumnController = async (req, res, next) => {
-    const { boardId, columnId } = req?.params
+export const deleteCardController = async (req, res, next) => {
+    const { boardId, columnId, cardId } = req?.params
     const { currentUser } = req
 
     if (!boardId || boardId?.trim() === "") {
@@ -189,6 +189,18 @@ export const deleteColumnController = async (req, res, next) => {
         })
     }
 
+    if (!cardId || cardId?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.idIsMissing
+        })
+    }
+
+    if (!isValidObjectId(cardId)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidId
+        })
+    }
+
     if (!currentUser) {
         return res.status(401).send({
             message: errorMessages?.unAuthError
@@ -203,21 +215,19 @@ export const deleteColumnController = async (req, res, next) => {
     }
 
     try {
-        const query = { _id: columnId, boardId: boardId, userId: _id }
-        const column = await columnModel.findOne(query)
+        const query = { _id: cardId, columnId: columnId, boardId: boardId, userId: _id }
+        const card = await cardModel.findOne(query)
 
-        if (!column) {
+        if (!card) {
             return res.status(401).send({
                 message: errorMessages?.unAuthError
             })
         }
 
-        const delResp = await columnModel.findByIdAndDelete(columnId)
-
-        // delete cards also
+        const delResp = await cardModel.findByIdAndDelete(cardId)
 
         return res.send({
-            message: errorMessages?.columnDeleted
+            message: errorMessages?.cardDeleted
         })
 
     } catch (error) {
