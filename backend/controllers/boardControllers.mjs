@@ -4,6 +4,7 @@ import { boardModel } from "../models/boardModel.mjs"
 import { columnModel } from "../models/columnModel.mjs"
 import { cardModel } from "../models/cardModel.mjs"
 import { boardNameLength } from "../utils/core.mjs"
+import { getRandomBackground } from "../utils/functions.mjs"
 
 export const getBoardsController = async (req, res, next) => {
     try {
@@ -67,7 +68,8 @@ export const createBoardController = async (req, res, next) => {
     try {
         const payload = {
             boardName: boardName,
-            createdBy: _id
+            createdBy: _id,
+            backgroundImage: getRandomBackground()
         }
 
         const board = await boardModel.create(payload)
