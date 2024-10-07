@@ -26,4 +26,5 @@ export const errorMessages = {
     boardNameRequired: "board name is required",
     boardNameLengthError: "board name length must be under 32 characters",
     boardCreated: "board created successfully",
+    boardDeleted: "board deleted successfully",
 }

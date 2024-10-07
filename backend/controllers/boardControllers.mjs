@@ -92,6 +92,62 @@ export const createBoardController = async (req, res, next) => {
     }
 }
 
+export const deleteBoardController = async (req, res, next) => {
+    const { boardId } = req?.params
+    const { currentUser } = req
+
+    if (!boardId || boardId?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.idIsMissing
+        })
+    }
+
+    if (!isValidObjectId(boardId)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidId
+        })
+    }
+
+    if (!currentUser) {
+        return res.status(401).send({
+            message: errorMessages?.unAuthError
+        })
+    }
+
+    const { _id } = currentUser
+    if (!_id || _id?.trim() === "" || !isValidObjectId(_id)) {
+        return res.status(401).send({
+            message: errorMessages?.unAuthError
+        })
+    }
+
+    try {
+        const query = { _id: boardId, createdBy: _id }
+        const board = await boardModel.findOne(query)
+
+        if (!board) {
+            return res.status(401).send({
+                message: errorMessages?.unAuthError
+            })
+        }
+
+        const delResp = await boardModel.findByIdAndDelete(boardId)
+
+        // delete columns & cards also
+
+        return res.send({
+            message: errorMessages?.boardDeleted
+        })
+
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({
+            message: errorMessages?.serverError,
+            error: error?.message
+        })
+    }
+}
+
 export const _ = async (req, res, next) => {
     try {
 
