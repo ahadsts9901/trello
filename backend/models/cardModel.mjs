@@ -35,7 +35,7 @@ let cardSchema = new Schema({
         trim: true,
         required: true,
     },
-    typs: {
+    type: {
         type: String,
         trim: true,
         default: null,

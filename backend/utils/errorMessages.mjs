@@ -34,5 +34,11 @@ export const errorMessages = {
     columnCreated: "column created successfully",
     columnDeleted: "column deleted successfully",
     columnUpdated: "column updated successfully",
+    cardsFetched: "cards fetched",
+    cardNameRequired: "card name is required",
+    cardNameLengthError: "card name length must be under 32 characters",
+    cardCreated: "card created successfully",
+    cardDeleted: "card deleted successfully",
+    cardUpdated: "card updated successfully",
     requiredParameterMissing: (field) => `required parameter is missing ${field}`
 }

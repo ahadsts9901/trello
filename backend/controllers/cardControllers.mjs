@@ -2,11 +2,12 @@ import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
 import { columnModel } from "../models/columnModel.mjs"
 import { columnNameLength } from "../utils/core.mjs"
+import { cardModel } from "../models/cardModel.mjs"
 
-export const getColumnsController = async (req, res, next) => {
+export const getCardsController = async (req, res, next) => {
     try {
         const { currentUser } = req
-        const { boardId } = req?.params
+        const { boardId, columnId } = req?.params
 
         if (!currentUser) {
             return res.status(401).send({
@@ -33,11 +34,23 @@ export const getColumnsController = async (req, res, next) => {
             })
         }
 
-        const query = { boardId: boardId, createdBy: _id }
-        const columns = await columnModel.find(query).sort({ _id: -1 }).exec()
+        if (!columnId || columnId?.trim() === "") {
+            return res.status(400).send({
+                message: errorMessages?.idIsMissing
+            })
+        }
+
+        if (!isValidObjectId(columnId)) {
+            return res.status(400).send({
+                message: errorMessages?.invalidId
+            })
+        }
+
+        const query = { boardId: boardId, userId: _id, columnId: columnId }
+        const cards = await cardModel.find(query).sort({ _id: -1 }).exec()
         return res.send({
-            message: errorMessages?.columnsFetched,
-            data: columns
+            message: errorMessages?.cardsFetched,
+            data: cards
         })
     } catch (error) {
         console.error(error)
