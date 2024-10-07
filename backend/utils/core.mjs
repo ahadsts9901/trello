@@ -6,6 +6,8 @@ export const defaultProfilePicture = "https://res.cloudinary.com/do6sd9nyx/image
 
 export const sessionInDays = 15;
 export const googleUserApi = "https://www.googleapis.com/oauth2/v3/userinfo"
+export const profilePictureUploadFolder = "trello/profile-pictures"
+export const _1mbSize = 10000000 // 1_mb
 
 export const allowedOrigins = "http://localhost:5173"
 export let globalIoObject = { io: null }

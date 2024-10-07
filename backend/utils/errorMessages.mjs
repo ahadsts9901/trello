@@ -17,5 +17,9 @@ export const errorMessages = {
     noAccountFound: "account not found",
     profilePhotoUpdated: "profile picture updated successfully",
     userNameUpdated: "username updated successfully",
-    profileFetched: "profile fetched"
+    profileFetched: "profile fetched",
+    userProfileFetched: "user profile fetched",
+    onlyImagesAllowed: "only images are allowed",
+    largeImage: "image too large please select under 2mb",
+    logoutDone: "logout successfull"
 }
