@@ -21,5 +21,7 @@ export const errorMessages = {
     userProfileFetched: "user profile fetched",
     onlyImagesAllowed: "only images are allowed",
     largeImage: "image too large please select under 2mb",
-    logoutDone: "logout successfull"
+    logoutDone: "logout successfull",
+    boardsFetched: "boards fetched",
+
 }
