@@ -1,6 +1,5 @@
 import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
-import { boardModel } from "../models/boardModel.mjs"
 import { columnModel } from "../models/columnModel.mjs"
 import { columnNameLength } from "../utils/core.mjs"
 
