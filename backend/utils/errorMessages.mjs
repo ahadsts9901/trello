@@ -11,6 +11,7 @@ export const errorMessages = {
     emailTaken: "email already taken",
     emailPasswordIncorrect: "email or password incorrect",
     noAccessToken: "access token is required",
+    googleLoginDone: "google login successfull",
     idIsMissing: "id is required",
     invalidId: "id is invalid",
     noAccountFound: "account not found",

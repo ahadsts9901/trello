@@ -35,9 +35,7 @@ export const authenticationMiddleware = async (req, res, next) => {
 }
 
 export const issueLoginToken = async (req, res, next) => {
-
     try {
-
         const { loginTokenPayload } = req
 
         if (!loginTokenPayload) {
@@ -53,12 +51,11 @@ export const issueLoginToken = async (req, res, next) => {
             secure: true,
             expires: new Date(Date.now() + sessionInDays * 24 * 60 * 60 * 1000)
         });
-
         next()
 
     } catch (error) {
         console.error(error)
-        res.status(500).send({
+        return res.status(500).send({
             message: errorMessages?.serverError,
             error: error?.message
         })
