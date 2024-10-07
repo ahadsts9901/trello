@@ -1,6 +1,8 @@
 import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
 import { boardModel } from "../models/boardModel.mjs"
+import { columnModel } from "../models/columnModel.mjs"
+import { cardModel } from "../models/cardModel.mjs"
 import { boardNameLength } from "../utils/core.mjs"
 
 export const getBoardsController = async (req, res, next) => {
@@ -131,9 +133,10 @@ export const deleteBoardController = async (req, res, next) => {
             })
         }
 
-        const delResp = await boardModel.findByIdAndDelete(boardId)
-
-        // delete columns & cards also
+        const delQuery = { boardId: boardId, userId: _id }
+        const delBoardResp = await boardModel.findByIdAndDelete(boardId)
+        const delColumnResp = await columnModel.deleteMany(delQuery)
+        const delCardResp = await cardModel.deleteMany(delQuery)
 
         return res.send({
             message: errorMessages?.boardDeleted

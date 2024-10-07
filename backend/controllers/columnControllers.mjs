@@ -2,6 +2,7 @@ import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
 import { columnModel } from "../models/columnModel.mjs"
 import { columnNameLength } from "../utils/core.mjs"
+import { cardModel } from "../models/cardModel.mjs"
 
 export const getColumnsController = async (req, res, next) => {
     try {
@@ -175,7 +176,9 @@ export const deleteColumnController = async (req, res, next) => {
             })
         }
 
-        const delResp = await columnModel.findByIdAndDelete(columnId)
+        const delQuery = { boardId: boardId, columnId: columnId, userId: _id }
+        const delColumnResp = await columnModel.findByIdAndDelete(columnId)
+        const delCardResp = await cardModel.deleteMany(delQuery)
 
         // delete cards also
 
