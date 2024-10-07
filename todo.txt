@@ -1,3 +1,4 @@
+fix sequence
 sort data by sequence
 length validation on edit
 realtime socket on all CRUD
