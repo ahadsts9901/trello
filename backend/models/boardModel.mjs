@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { boardNameLength } from "../utils/core.mjs";
 
 // {
 //     "_id": "IbJLYuptc",
@@ -12,7 +13,7 @@ import { Schema, model } from "mongoose";
 let boardSchema = new Schema({
     boardName: {
         type: String,
-        maxlength: 120,
+        maxlength: boardNameLength,
         trim: true,
         required: true,
     },

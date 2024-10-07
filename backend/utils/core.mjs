@@ -11,3 +11,5 @@ export const _1mbSize = 10000000 // 1_mb
 
 export const allowedOrigins = "http://localhost:5173"
 export let globalIoObject = { io: null }
+
+export const boardNameLength = 32
