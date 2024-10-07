@@ -10,6 +10,9 @@ import { allowedOrigins, globalIoObject } from "./utils/core.mjs"
 
 import authRoutes from "./routes/authRoutes.mjs"
 import profileRoutes from "./routes/profileRoutes.mjs"
+import boardRoutes from "./routes/boardRoutes.mjs"
+import columnRoutes from "./routes/columnRoutes.mjs"
+import cardRoutes from "./routes/cardRoutes.mjs"
 
 import { authenticationMiddleware } from "./middlewares/jwtMiddlewares.mjs"
 
@@ -20,7 +23,7 @@ app.use(json())
 app.use(cookieParser())
 app.use(morgan("dev"))
 
-app.use("/api/v1", authRoutes, authenticationMiddleware, profileRoutes)
+app.use("/api/v1", authRoutes, authenticationMiddleware, profileRoutes, boardRoutes, columnRoutes, cardRoutes)
 
 // socket io
 const server = createServer(app)
