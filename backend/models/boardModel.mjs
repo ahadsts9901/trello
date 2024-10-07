@@ -28,11 +28,6 @@ let boardSchema = new Schema({
         trim: true,
         required: true,
     },
-    users: {
-        type: [Schema.Types.ObjectId],
-        ref: "users",
-        default: [],
-    },
     createdOn: {
         type: Date,
         default: Date.now
