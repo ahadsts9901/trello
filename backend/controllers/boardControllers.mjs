@@ -148,8 +148,68 @@ export const deleteBoardController = async (req, res, next) => {
     }
 }
 
-export const _ = async (req, res, next) => {
+export const updateBoardController = async (req, res, next) => {
+    const { boardId } = req?.params
+    const { currentUser } = req
+    const { boardName, backgroundImage } = req?.body
+
+    if (!boardId || boardId?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.idIsMissing
+        })
+    }
+
+    if (!isValidObjectId(boardId)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidId
+        })
+    }
+
+    if (!currentUser) {
+        return res.status(401).send({
+            message: errorMessages?.unAuthError
+        })
+    }
+
+    const { _id } = currentUser
+    if (!_id || _id?.trim() === "" || !isValidObjectId(_id)) {
+        return res.status(401).send({
+            message: errorMessages?.unAuthError
+        })
+    }
+
+    if (!boardName || boardName?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.requiredParameterMissing("boardName")
+        })
+    }
+
+    if (!backgroundImage || backgroundImage?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.requiredParameterMissing("backgroundImage")
+        })
+    }
+
     try {
+        const query = { _id: boardId, createdBy: _id }
+        const board = await boardModel.findOne(query)
+
+        if (!board) {
+            return res.status(401).send({
+                message: errorMessages?.unAuthError
+            })
+        }
+
+        board.boardName = boardName
+        board.backgroundImage = backgroundImage
+        await board.save()
+
+        const data = { ...board, boardName: boardName?.trim(), backgroundImage: backgroundImage?.trim() }
+
+        return res.send({
+            message: errorMessages?.boardDeleted,
+            data: data
+        })
 
     } catch (error) {
         console.error(error)

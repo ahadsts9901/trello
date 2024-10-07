@@ -27,4 +27,5 @@ export const errorMessages = {
     boardNameLengthError: "board name length must be under 32 characters",
     boardCreated: "board created successfully",
     boardDeleted: "board deleted successfully",
+    requiredParameterMissing: (field) => `required parameter is missing ${field}`
 }
