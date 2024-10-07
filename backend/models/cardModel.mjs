@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { cardDescriptionLength, cardTitleLength } from "../utils/core.mjs";
 
 // {
 //     "_id": "LuKGJ5FGN",
@@ -25,13 +26,13 @@ let cardSchema = new Schema({
     },
     title: {
         type: String,
-        maxlength: 120,
+        maxlength: cardTitleLength,
         trim: true,
         required: true,
     },
     description: {
         type: String,
-        maxlength: 420,
+        maxlength: cardDescriptionLength,
         trim: true,
         required: true,
     },

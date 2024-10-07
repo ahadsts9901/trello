@@ -40,5 +40,6 @@ export const errorMessages = {
     cardCreated: "card created successfully",
     cardDeleted: "card deleted successfully",
     cardUpdated: "card updated successfully",
+    invalidCardType: "card type is invalid",
     requiredParameterMissing: (field) => `required parameter is missing ${field}`
 }

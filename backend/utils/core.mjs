@@ -14,3 +14,6 @@ export let globalIoObject = { io: null }
 
 export const boardNameLength = 32
 export const columnNameLength = 32
+export const cardTitleLength = 32
+export const cardDescriptionLength = 500
+export const cardTypesEnum = ["BUG", "FEATURE", "PERFORMANCE", "INFORMATION"]

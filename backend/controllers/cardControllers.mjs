@@ -1,7 +1,7 @@
 import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
 import { columnModel } from "../models/columnModel.mjs"
-import { columnNameLength } from "../utils/core.mjs"
+import { cardTypesEnum, columnNameLength } from "../utils/core.mjs"
 import { cardModel } from "../models/cardModel.mjs"
 
 export const getCardsController = async (req, res, next) => {
@@ -61,9 +61,9 @@ export const getCardsController = async (req, res, next) => {
     }
 }
 
-export const createColumnController = async (req, res, next) => {
+export const createCardController = async (req, res, next) => {
     const { currentUser } = req
-    const { columnName, boardId } = req?.body
+    const { boardId, columnId, title, description, type } = req?.body
 
     if (!currentUser) {
         return res.status(401).send({
@@ -78,53 +78,77 @@ export const createColumnController = async (req, res, next) => {
         })
     }
 
-    if (!columnName || columnName?.trim() === "") {
-        return res.status(400).send({
-            message: errorMessages?.columnNameRequired
-        })
-    }
-
-    if (columnName?.length > columnNameLength) {
-        return res.status(400).send({
-            message: errorMessages?.columnNameLengthError
-        })
-    }
-
     if (!boardId || boardId?.trim() === "") {
-        return res.status(401).send({
+        return res.status(400).send({
             message: errorMessages?.idIsMissing
         })
     }
 
     if (!isValidObjectId(boardId)) {
-        return res.status(401).send({
+        return res.status(400).send({
             message: errorMessages?.invalidId
         })
     }
 
+    if (!columnId || columnId?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.idIsMissing
+        })
+    }
+
+    if (!isValidObjectId(columnId)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidId
+        })
+    }
+
+    if (!title || title?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.requiredParameterMissing("title")
+        })
+    }
+
+    if (!description || description?.trim() === "") {
+        return res.status(400).send({
+            message: errorMessages?.requiredParameterMissing("description")
+        })
+    }
+
+    if (type && type?.length && !cardTypesEnum?.includes(type)) {
+        return res.status(400).send({
+            message: errorMessages?.invalidCardType
+        })
+    }
+
     try {
-        const query = { boardId: boardId, createdBy: _id }
-        const columnsLength = await columnModel.countDocuments(query)
+        const query = { boardId: boardId, columnId: columnId, userId: _id }
+        const cardsLength = await cardModel.countDocuments(query)
 
         const payload = {
             boardId: boardId,
-            columnName: columnName,
+            columnId: columnId,
             userId: _id,
-            sequence: +columnsLength + 1
+            title: title,
+            description: description,
+            type: type,
+            sequence: +cardsLength + 1
         }
 
-        const column = await columnModel.create(payload)
+        const card = await columnModel.create(payload)
         const data = {
-            _id: column?._id,
-            boardId: column?.boardId,
-            columnName: column?.columnName,
-            userId: column?.userId,
-            createdOn: column?.createdOn,
-            sequence: column?.sequence
+            _id: card?._id,
+            boardId: card?.boardId,
+            columnId: card?.columnId,
+            userId: card?.userId,
+            createdOn: card?.createdOn,
+            sequence: card?.sequence,
+            title: card?.title,
+            description: card?.description,
+            type: card?.type,
         }
 
         return res.send({
-            message: errorMessages?.columnCreated,
+            message: errorMessages?.cardCreated,
             data: data
         })
 

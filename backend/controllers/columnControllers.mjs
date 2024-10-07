@@ -90,7 +90,7 @@ export const createColumnController = async (req, res, next) => {
     }
 
     try {
-        const query = { boardId: boardId, createdBy: _id }
+        const query = { boardId: boardId, userId: _id }
         const columnsLength = await columnModel.countDocuments(query)
 
         const payload = {
