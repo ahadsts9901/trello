@@ -13,3 +13,4 @@ export const allowedOrigins = "http://localhost:5173"
 export let globalIoObject = { io: null }
 
 export const boardNameLength = 32
+export const columnNameLength = 32

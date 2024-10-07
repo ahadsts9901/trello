@@ -207,7 +207,7 @@ export const updateBoardController = async (req, res, next) => {
         const data = { ...board, boardName: boardName?.trim(), backgroundImage: backgroundImage?.trim() }
 
         return res.send({
-            message: errorMessages?.boardDeleted,
+            message: errorMessages?.boardUpdated,
             data: data
         })
 

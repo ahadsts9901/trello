@@ -27,5 +27,12 @@ export const errorMessages = {
     boardNameLengthError: "board name length must be under 32 characters",
     boardCreated: "board created successfully",
     boardDeleted: "board deleted successfully",
+    boardUpdated: "board updated successfully",
+    columnsFetched: "columns fetched",
+    columnNameRequired: "column name is required",
+    columnNameLengthError: "column name length must be under 32 characters",
+    columnCreated: "column created successfully",
+    columnDeleted: "column deleted successfully",
+    columnUpdated: "column updated successfully",
     requiredParameterMissing: (field) => `required parameter is missing ${field}`
 }

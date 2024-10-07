@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { columnNameLength } from "../utils/core.mjs";
 
 // {
 //     "_id": "w_9r0m0HJ",
@@ -16,15 +17,9 @@ let columnSchema = new Schema({
         ref: "boards",
         required: true,
     },
-    boardName: {
-        type: String,
-        maxlength: 120,
-        trim: true,
-        required: true,
-    },
     columnName: {
         type: String,
-        maxlength: 120,
+        maxlength: columnNameLength,
         trim: true,
         required: true,
     },
