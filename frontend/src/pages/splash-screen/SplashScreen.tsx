@@ -1,8 +1,15 @@
 import "./SplashScreen.css"
+import logo from "/logo.png"
+import GoogleLoginButton from "../../components/GoogleLoginButton"
 
-const SplashScreen = () => {
+const SplashScreen = ({ showLoginButton }: any) => {
     return (
-        <div>SplashScreen</div>
+        <>
+            <div className="splashCont">
+                <img src={logo} alt="logo" />
+                {showLoginButton ? <GoogleLoginButton /> : null}
+            </div>
+        </>
     )
 }
 

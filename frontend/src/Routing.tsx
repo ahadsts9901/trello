@@ -1,9 +1,9 @@
 import "./App.css"
 
-// import '@fontsource/josefin-sans/300.css';
-// import '@fontsource/josefin-sans/400.css';
-// import '@fontsource/josefin-sans/500.css';
-// import '@fontsource/josefin-sans/700.css';
+import '@fontsource/plus-jakarta-sans/300.css';
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/500.css';
+import '@fontsource/plus-jakarta-sans/700.css';
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

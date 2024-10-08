@@ -1,0 +1,21 @@
+$primary-strong: #e9edef;
+
+.googleIconLogin {
+    background-color: $primary-strong;
+    border-radius: 100%;
+    width: 2em;
+    height: 2em;
+    padding: 0.2em;
+    margin-right: 0.5em;
+}
+
+.dialogContent-sts {
+    svg {
+        font-size: 0.8em;
+        color: $panel-header-icon;
+    }
+}
+
+.dialog-sts{
+    z-index: 800!important;
+}
