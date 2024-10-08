@@ -1,4 +1,2 @@
-splash screen
-mui
-login
-mi theme
+boards page/homepage
+logout
