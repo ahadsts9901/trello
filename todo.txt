@@ -1,1 +1,1 @@
-realtime socket on all CRUD
+frontend
