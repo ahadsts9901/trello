@@ -1,3 +1,6 @@
+theming
+recreate ui wit motivation
+get inspiration from sufyan's invoice app
 get single board frontend
 column crud
 cards crud
