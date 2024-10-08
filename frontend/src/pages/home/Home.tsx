@@ -6,6 +6,7 @@ import { baseUrl } from "../../utils/core"
 import { Button, CircularProgress, TextField } from "@mui/material"
 import { IoIosAddCircleOutline } from "react-icons/io"
 import AlertMui from "../../components/mui/AlertMui"
+import { useNavigate } from "react-router-dom"
 
 const Loader = () => <div className="loader-cont"><CircularProgress size={40} color="primary" /></div>
 
@@ -58,10 +59,16 @@ const AddBoardForm = ({ getBoards }: any) => {
 }
 
 const SingleBoard = ({ data }: any) => {
+
+    const navigate = useNavigate()
+
     return (
         <>
-            <div className="single-board">
-                board
+            <div className="single-board"
+                style={{ backgroundImage: `url(${data?.backgroundImage})` }}
+                onClick={() => navigate(`/board/${data?._id}`)}
+            >
+                <p>{data?.boardName}</p>
             </div>
         </>
     )
