@@ -1,7 +1,5 @@
-edit board 
-delete board
-confirmation delete board
-edit board input
+get single board api
+get single board frontend
 column crud
 cards crud
 drag and drop
