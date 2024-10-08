@@ -22,6 +22,7 @@ export const errorMessages = {
     onlyImagesAllowed: "only images are allowed",
     largeImage: "image too large please select under 2mb",
     logoutDone: "logout successfull",
+    boardFetched: "board fetched",
     boardsFetched: "boards fetched",
     boardNameRequired: "board name is required",
     boardNameLengthError: "board name length must be under 32 characters",

@@ -96,6 +96,57 @@ export const createBoardController = async (req, res, next) => {
     }
 }
 
+export const getSingleBoardController = async (req, res, next) => {
+    try {
+        const { boardId } = req?.params
+        const { currentUser } = req
+
+        if (!boardId || boardId?.trim() === "") {
+            return res.status(400).send({
+                message: errorMessages?.idIsMissing
+            })
+        }
+
+        if (!isValidObjectId(boardId)) {
+            return res.status(400).send({
+                message: errorMessages?.invalidId
+            })
+        }
+
+        if (!currentUser) {
+            return res.status(401).send({
+                message: errorMessages?.unAuthError
+            })
+        }
+
+        const { _id } = currentUser
+        if (!_id || _id?.trim() === "" || !isValidObjectId(_id)) {
+            return res.status(401).send({
+                message: errorMessages?.unAuthError
+            })
+        }
+
+        const board = await boardModel.findOne({ createdBy: _id, _id: boardId }).exec()
+
+        if (board) {
+            return res.status(401).send({
+                message: errorMessages?.unAuthError
+            })
+        }
+
+        return res.send({
+            message: errorMessages?.boardFetched,
+            data: board
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({
+            message: errorMessages?.serverError,
+            error: error?.message
+        })
+    }
+}
+
 export const deleteBoardController = async (req, res, next) => {
     const { boardId } = req?.params
     const { currentUser } = req
