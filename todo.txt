@@ -1,6 +1,1 @@
 boards page/homepage
-header
-logout
-porfile
-edit profile
-edit profile pictrue
