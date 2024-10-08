@@ -63,7 +63,15 @@ const GoogleLoginButton = () => {
     return (
         <>
             {errorMessage && <AlertMui status="error" text={errorMessage} />}
-            <Button color="primary" variant="contained" onClick={getAccessToken} disabled={isLoading}>
+            <Button color="primary" variant="contained" onClick={getAccessToken} disabled={isLoading}
+                sx={{
+                    color: "#303233",
+                    background: "#fff",
+                    fontWeight: "bold",
+                    border: "1px solid #ccc",
+                    boxShadow: 0
+                }}
+            >
                 <FcGoogle className="googleIconLogin" />
                 Continue With Google
             </Button>

@@ -6,11 +6,11 @@
   justify-content: center;
   align-items: center;
   gap: 3em;
-  background-color: #2A3950;
+  background-color: #fff;
 }
 .splashCont img {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: center;

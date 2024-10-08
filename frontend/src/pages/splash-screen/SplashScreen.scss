@@ -3,6 +3,7 @@ $semiDarkBlue: #0F6BAC;
 $blue: #258BD6;
 $semiLightBlue: #85B7FE;
 $lightBlue: #C6CEFF;
+$white: #fff;
 
 .splashCont {
     width: 100vw;
@@ -12,11 +13,11 @@ $lightBlue: #C6CEFF;
     justify-content: center;
     align-items: center;
     gap: 3em;
-    background-color: $darkBlue;
+    background-color: $white;
 
     img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         object-fit: contain;
         object-position: center;
     }
