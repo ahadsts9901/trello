@@ -1,12 +1,11 @@
-import { useState } from "react"
 import "./Home.css"
-import MUIDrawer from "../../components/Sidebar"
+import Header from "../../components/header/Header"
 
 const Home = () => {
-    const [is_drawer_open, set_is_drawer_open] = useState(false)
+    
     return (
         <>
-            <MUIDrawer open={is_drawer_open} setOpen={set_is_drawer_open}>hi</MUIDrawer>
+            <Header />
             <div className="home"></div>
         </>
     )

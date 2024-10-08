@@ -13,7 +13,6 @@ import { baseUrl } from "./utils/core";
 import Home from "./pages/home/Home";
 import SplashScreen from "./pages/splash-screen/SplashScreen";
 import Login from "./pages/login/Login";
-import Profile from "./pages/profile/Profile";
 import Board from "./pages/board/Board";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -32,7 +31,6 @@ const AuthRouting = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/board/:boardId" element={<Board />} />
-                <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<Navigate to="/" replace={true} />} />
             </Routes>
         </>
