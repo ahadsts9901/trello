@@ -35,7 +35,7 @@ export const getColumnsController = async (req, res, next) => {
         }
 
         const query = { boardId: boardId, createdBy: _id }
-        const columns = await columnModel.find(query).sort({ _id: -1 }).exec()
+        const columns = await columnModel.find(query).sort({ sequence: 1 }).exec()
         return res.send({
             message: errorMessages?.columnsFetched,
             data: columns

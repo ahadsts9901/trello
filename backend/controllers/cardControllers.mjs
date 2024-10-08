@@ -47,7 +47,7 @@ export const getCardsController = async (req, res, next) => {
         }
 
         const query = { boardId: boardId, userId: _id, columnId: columnId }
-        const cards = await cardModel.find(query).sort({ _id: -1 }).exec()
+        const cards = await cardModel.find(query).sort({ sequence: 1 }).exec()
         return res.send({
             message: errorMessages?.cardsFetched,
             data: cards
