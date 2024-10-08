@@ -1,1 +1,10 @@
-boards page/homepage
+edit board 
+delete board
+confirmation delete board
+edit board input
+column crud
+cards crud
+drag and drop
+build readme
+console logs remove
+change ui
