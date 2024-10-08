@@ -243,6 +243,12 @@ export const updateColumnController = async (req, res, next) => {
         })
     }
 
+    if (columnName?.length > columnNameLength) {
+        return res.status(400).send({
+            message: errorMessages?.columnNameLengthError
+        })
+    }
+
     if (!sequence || isNaN(+sequence)) {
         return res.status(400).send({
             message: errorMessages?.requiredParameterMissing("sequence")

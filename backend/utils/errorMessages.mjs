@@ -41,5 +41,7 @@ export const errorMessages = {
     cardDeleted: "card deleted successfully",
     cardUpdated: "card updated successfully",
     invalidCardType: "card type is invalid",
+    cardTitleLengthError: "card title length must be under 32 characters",
+    cardDescriptionLengthError: "card description length must be under 500 characters",
     requiredParameterMissing: (field) => `required parameter is missing ${field}`
 }

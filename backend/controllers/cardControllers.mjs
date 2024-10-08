@@ -1,7 +1,7 @@
 import { isValidObjectId } from "mongoose"
 import { errorMessages } from "../utils/errorMessages.mjs"
 import { columnModel } from "../models/columnModel.mjs"
-import { cardTypesEnum, columnNameLength } from "../utils/core.mjs"
+import { cardDescriptionLength, cardTitleLength, cardTypesEnum, columnNameLength } from "../utils/core.mjs"
 import { cardModel } from "../models/cardModel.mjs"
 
 export const getCardsController = async (req, res, next) => {
@@ -300,9 +300,21 @@ export const updateCardController = async (req, res, next) => {
         })
     }
 
+    if (title?.length > cardTitleLength) {
+        return res.status(400).send({
+            message: errorMessages?.cardTitleLengthError
+        })
+    }
+
     if (!description || description?.trim() === "") {
         return res.status(400).send({
             message: errorMessages?.requiredParameterMissing("description")
+        })
+    }
+
+    if (description?.length > cardDescriptionLength) {
+        return res.status(400).send({
+            message: errorMessages?.cardDescriptionLengthError
         })
     }
 

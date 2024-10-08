@@ -1,2 +1,1 @@
-length validation on edit
 realtime socket on all CRUD

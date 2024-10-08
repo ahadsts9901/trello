@@ -189,6 +189,12 @@ export const updateBoardController = async (req, res, next) => {
         })
     }
 
+    if (boardName?.length > boardNameLength) {
+        return res.status(400).send({
+            message: errorMessages?.boardNameLengthError
+        })
+    }
+
     if (!backgroundImage || backgroundImage?.trim() === "") {
         return res.status(400).send({
             message: errorMessages?.requiredParameterMissing("backgroundImage")
