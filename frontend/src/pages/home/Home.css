@@ -25,24 +25,46 @@
   gap: 1em;
   flex-wrap: wrap;
 }
-.home .boards-cont .single-board {
+.home .boards-cont .single-board-cont {
   width: calc(50% - 0.5em);
   height: 10em;
+  cursor: pointer;
+  position: relative;
+}
+.home .boards-cont .single-board-cont svg {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 10;
+  background-color: #2A3950;
+  color: #fff;
+  border-radius: 20px;
+  padding: 2px;
+  cursor: pointer;
+}
+.home .boards-cont .single-board-cont .single-board {
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.home .boards-cont .single-board p {
+.home .boards-cont .single-board-cont .single-board p {
   width: 100%;
   text-align: center;
   color: #fff;
   font-weight: bold;
   text-shadow: 1px 4px 3px rgba(0, 0, 0, 0.78);
   font-size: 1.3em;
+}
+.home .boards-cont .single-board-cont .single-board input {
+  color: #fff;
 }
 .home .boards-cont .add-board-form {
   width: 100%;
