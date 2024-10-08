@@ -1,0 +1,35 @@
+$white: #e9edef;
+$black: #303233;
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.5em;
+    padding: 1.5em;
+
+    h3 {
+        width: 100%;
+        text-align: left;
+        color: $black;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+        margin-top: 2em;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    input,
+    label {
+        font-size: 0.8em;
+    }
+
+}

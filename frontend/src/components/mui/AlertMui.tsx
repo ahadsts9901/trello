@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { RxCross2 } from "react-icons/rx";
 
 export default function AlertMui({ status, text }: any) {
     const [state, setState] = React.useState({
@@ -18,10 +17,11 @@ export default function AlertMui({ status, text }: any) {
                 key={"top" + "center"}
                 onClose={() => setState({ ...state, open: false })}
             >
-                <Alert severity={status} icon={<RxCross2 />} style={{
+                <Alert severity={status} style={{
                     width: "fit-content",
                     fontSize: "1em",
-                    margin: "0 1em"
+                    margin: "0 1em",
+                    textTransform: "capitalize"
                 }}>
                     {text}
                 </Alert>

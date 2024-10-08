@@ -1,0 +1,30 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.5em;
+  padding: 1.5em;
+}
+.profile h3 {
+  width: 100%;
+  text-align: left;
+  color: #303233;
+  font-size: 1em;
+  font-weight: bold;
+}
+.profile img {
+  width: 180px;
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  margin-top: 2em;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.profile input,
+.profile label {
+  font-size: 0.8em;
+}/*# sourceMappingURL=Profile.css.map */
