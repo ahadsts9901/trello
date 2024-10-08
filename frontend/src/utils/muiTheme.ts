@@ -24,7 +24,7 @@ export const themeSchema: any = {
                 root: {
                     textTransform: 'none',
                     borderRadius: '50px',
-                    padding: "10px 28px",
+                    padding: "6px 28px",
                 },
             }
         },
