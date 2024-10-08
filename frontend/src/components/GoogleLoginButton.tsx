@@ -29,9 +29,7 @@ const GoogleLoginButton = () => {
     }, [googleToken])
 
     const getAccessToken = async () => {
-
         setIsLoading(true)
-
         await signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const credential: any = GoogleAuthProvider.credentialFromResult(result);
@@ -42,26 +40,16 @@ const GoogleLoginButton = () => {
                 console.error(error);
                 setIsLoading(false)
             });
-
     }
 
     const googleLogin = async (token: string) => {
-
         if (!token) return
-
         try {
-
             const loginResp = await axios.post(`${baseUrl}/api/v1/google-login`, {
                 accessToken: `Bearer ${token}`
             }, { withCredentials: true })
-
-            await axios.put(`${baseUrl}/api/v1/mark-messages-delievered`, {}, {
-                withCredentials: true
-            })
-
             dispatch(login(loginResp?.data?.data))
             navigate("/")
-
         } catch (error) {
             console.error(error)
             dispatch(logout())
@@ -70,7 +58,6 @@ const GoogleLoginButton = () => {
                 setErrorMessage(null)
             }, 3000);
         }
-
     }
 
     return (

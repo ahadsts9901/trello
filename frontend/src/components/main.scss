@@ -3,16 +3,16 @@ $primary-strong: #e9edef;
 .googleIconLogin {
     background-color: $primary-strong;
     border-radius: 100%;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     padding: 0.2em;
-    margin-right: 0.5em;
+    margin-right: 0.8em;
 }
 
 .dialogContent-sts {
     svg {
         font-size: 0.8em;
-        color: $panel-header-icon;
+        color: $primary-strong;
     }
 }
 

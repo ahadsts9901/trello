@@ -1,7 +1,7 @@
-import '@fontsource/plus-jakarta-sans/300.css';
-import '@fontsource/plus-jakarta-sans/400.css';
-import '@fontsource/plus-jakarta-sans/500.css';
-import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 import { createTheme } from '@mui/material/styles';
 
@@ -13,13 +13,9 @@ export const themeSchema: any = {
             dark: '#2A3950',
             contrastText: '#e9edef',
         },
-        secondary: {
-            main: '#',
-            contrastText: '#',
-        },
     },
     typography: {
-        fontFamily: 'Plus Jakarta Sans, sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         textTransform: 'none',
     },
     components: {
@@ -28,7 +24,7 @@ export const themeSchema: any = {
                 root: {
                     textTransform: 'none',
                     borderRadius: '50px',
-                    padding: "10px 20px",
+                    padding: "10px 28px",
                 },
             }
         },
