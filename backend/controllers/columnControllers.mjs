@@ -92,13 +92,13 @@ export const createColumnController = async (req, res, next) => {
 
     try {
         const query = { boardId: boardId, userId: _id }
-        const columnsLength = await columnModel.countDocuments(query)
+        const lastSequence = await columnModel.findOne(query).sort({ sequence: -1 })
 
         const payload = {
             boardId: boardId,
             columnName: columnName,
             userId: _id,
-            sequence: +columnsLength + 1
+            sequence: lastSequence ? lastSequence.sequence + 1 : 1
         }
 
         const column = await columnModel.create(payload)

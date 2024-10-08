@@ -122,7 +122,8 @@ export const createCardController = async (req, res, next) => {
 
     try {
         const query = { boardId: boardId, columnId: columnId, userId: _id }
-        const cardsLength = await cardModel.countDocuments(query)
+
+        const lastSequence = await cardModel.findOne(query).sort({ sequence: -1 })
 
         const payload = {
             boardId: boardId,
@@ -131,7 +132,7 @@ export const createCardController = async (req, res, next) => {
             title: title,
             description: description,
             type: type,
-            sequence: +cardsLength + 1
+            sequence: lastSequence ? lastSequence.sequence + 1 : 1
         }
 
         const card = await columnModel.create(payload)
