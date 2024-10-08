@@ -3,3 +3,14 @@ $semiDarkBlue: #0F6BAC;
 $blue: #258BD6;
 $semiLightBlue: #85B7FE;
 $lightBlue: #C6CEFF;
+
+.home {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1em;
+    padding: 1em;
+}
