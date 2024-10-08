@@ -1,13 +1,13 @@
 import "./main.css"
-import "../utils/firebase"
+import "../../utils/firebase"
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import AlertMui from "./mui/AlertMui";
+import AlertMui from "../mui/AlertMui";
 import axios from "axios";
-import { baseUrl } from "../utils/core";
-import { login, logout } from "../redux/user";
+import { baseUrl } from "../../utils/core";
+import { login, logout } from "../../redux/user";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

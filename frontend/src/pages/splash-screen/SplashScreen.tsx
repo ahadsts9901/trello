@@ -1,6 +1,6 @@
 import "./SplashScreen.css"
 import logo from "/logo.png"
-import GoogleLoginButton from "../../components/GoogleLoginButton"
+import GoogleLoginButton from "../../components/google-login-button/GoogleLoginButton"
 
 const SplashScreen = ({ showLoginButton }: any) => {
     return (

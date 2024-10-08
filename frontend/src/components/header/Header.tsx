@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { defaultProfilePicture, profilePictureBg } from "../../utils/core"
 import { useState } from "react"
-import Sidebar from "../Sidebar"
+import Sidebar from "../mui/Sidebar"
 
 const Header = () => {
     const navigate = useNavigate()
